@@ -24,6 +24,12 @@ public class valueDealControl {
         }catch (Exception exception) {
             type = "shnuro";
         }
+        try {
+            Boolean num = Boolean.valueOf(value);
+            return "bul";
+        }catch (Exception exception) {
+            type = "shnuro";
+        }
         return type;
     }
     public static String replaceSpace(String code) {

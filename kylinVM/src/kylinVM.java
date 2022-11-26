@@ -8,6 +8,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class kylinVM {
+    public void AgoVar(String VarNomo,String ValoroTajpu,String VarValoro){
+        if (ValoroTajpu=="ent"){
+
+        }
+        else if (ValoroTajpu=="shnuro"){
+
+        }
+        else if (ValoroTajpu=="decimalo"){
+
+        }
+    }
+
     public static void main(String[] args) {
         String filePath = args[0];
         File file = new File(filePath);
@@ -39,9 +51,9 @@ public class kylinVM {
             }
             bufferedReader.close();
             for (int i=0;i<valueDealControl.valueName.length;i++) {
-                String keyWord = valueDealControl.valueName[i];
+                String VarNomo = valueDealControl.valueName[i];
                 //aplika variablo
-                System.out.print("Valoro Nomo: "+keyWord+" ; Tajpu: "+valueDealControl.valueType[i]+" ; Enhavo: "+valueDealControl.valueContent[i]+";\n");
+                System.out.print("Valoro Nomo: "+VarNomo+" ; Tajpu: "+valueDealControl.valueType[i]+" ; Enhavo: "+valueDealControl.valueContent[i]+";\n");
             }
             //System.out.println(getOneLine);
         } catch (IOException exception) {
