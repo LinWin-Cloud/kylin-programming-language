@@ -1,3 +1,5 @@
+import org.omg.CORBA.Any;
+
 import javax.xml.namespace.QName;
 import java.io.BufferedReader;
 import java.io.File;
@@ -10,9 +12,9 @@ import java.util.List;
 import java.util.Map;
 
 public class kylinVM {
+    Map<String, Integer> EntVar=new HashMap<String, Integer>();
     public void AgoVar(String VarNomo,String ValoroTajpu,String VarValoro){
         if (ValoroTajpu=="ent"){
-            Map<String, Integer> EntVar=new HashMap<String, Integer>();
             EntVar.put(VarNomo,Integer.valueOf(VarValoro));
         }
         else if (ValoroTajpu=="shnuro"){
@@ -23,8 +25,16 @@ public class kylinVM {
         }
     }
 
+    public int AkiEntVarValoro(String VarNomo, String ValoroTajpu){
+        if (ValoroTajpu=="ent"){
+            return EntVar.get(VarNomo);
+        }
+        return 0;
+    }
+
     public static void main(String[] args) {
         String filePath = args[0];
+        kylinVM self = new kylinVM();
         File file = new File(filePath);
         if (!file.exists()) {
             System.out.println(errorDealControl.getError_FileNotFind(filePath));
@@ -56,6 +66,9 @@ public class kylinVM {
             for (int i=0;i<valueDealControl.valueName.length;i++) {
                 String VarNomo = valueDealControl.valueName[i];
                 //aplika variablo
+                self.AgoVar(VarNomo,valueDealControl.valueType[i],valueDealControl.valueContent[i]);
+                int get = self.AkiEntVarValoro(VarNomo,valueDealControl.valueType[i]);
+                System.out.println(get);
                 System.out.print("Valoro Nomo: "+VarNomo+" ; Tajpu: "+valueDealControl.valueType[i]+" ; Enhavo: "+valueDealControl.valueContent[i]+";\n");
             }
             //System.out.println(getOneLine);
