@@ -5,12 +5,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.StandardSocketOptions;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class kylinVM {
     public void AgoVar(String VarNomo,String ValoroTajpu,String VarValoro){
         if (ValoroTajpu=="ent"){
-
+            Map<String, Integer> EntVar=new HashMap<String, Integer>();
+            EntVar.put(VarNomo,Integer.valueOf(VarValoro));
         }
         else if (ValoroTajpu=="shnuro"){
 
