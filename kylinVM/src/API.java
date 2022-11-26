@@ -37,10 +37,10 @@ public class API {
                 }
             }
 
-            if (apiKey.equals("println")) {
+            if (apiKey.equals("presiln")) {
                 //System.out.println(tmpFunctionContent+";");
 
-                if (getTypeValue.equals("string")) {
+                if (getTypeValue.equals("shnuro")) {
                     //is string type .
                     if (isVar) {
                         for (int i=0;i<valueDealControl.valueName.length;i++) {
@@ -61,7 +61,7 @@ public class API {
                         for (int i=0;i<valueDealControl.valueName.length;i++) {
                             if (tmpFunctionContent.replace(" ","").equals(valueDealControl.valueName[i])) {
                                 String tmp = valueDealControl.valueContent[i];
-                                if (valueDealControl.getValueType(tmp).equals("string")) {
+                                if (valueDealControl.getValueType(tmp).equals("shnuro")) {
                                     osMod.outLineLn(tmp.substring(tmp.indexOf("\"")+1,tmp.lastIndexOf("\"")));
                                 }else {
                                     osMod.outLineLn(tmp.substring(1,tmp.length()));
@@ -80,7 +80,7 @@ public class API {
                     }
                 }
             }
-            if (apiKey.equals("print")) {
+            if (apiKey.equals("presi")) {
 
             }
         }catch (Exception exception){

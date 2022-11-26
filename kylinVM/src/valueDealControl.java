@@ -8,20 +8,20 @@ public class valueDealControl {
     public static String[] function = {""};
 
     public static String getValueType(String value) {
-        String type = "string";
+        String type = "shnuro";
         value = value.replace(" ","");
         try {
             //is Int?
             int num = Integer.valueOf(value);
-            return "int";
+            return "ent";
         }catch (Exception exception) {
-            type = "string";
+            type = "shnuro";
         }
         try {
             Double num = Double.valueOf(value);
-            return "double";
+            return "duoble";
         }catch (Exception exception) {
-            type = "string";
+            type = "shnuro";
         }
         return type;
     }
@@ -31,9 +31,9 @@ public class valueDealControl {
         }
         //replace all the space before the real code.
         String[] strings = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p"
-                ,"q","r","s","t","u","v","w","x","y","z"
+                ,"q","r","s","t","u","v","w","x","y","z","ĥ","ĉ","ŝ","ĵ","ŭ"
                 ,"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q"
-                ,"R","S","T","U","V","W","X","Y","Z"
+                ,"R","S","T","U","V","W","X","Y","Z",""
         };
         String codes = "";
         for (int i =0;i<code.length();i++) {

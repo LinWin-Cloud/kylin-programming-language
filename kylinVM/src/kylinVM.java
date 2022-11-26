@@ -90,9 +90,9 @@ public class kylinVM {
                     valueDealControl.valueContent = list2.toArray(new String[list2.size()]);
 
                 }catch (Exception exception) {
-                    System.out.println("[Error] Kylin Error: Do Not Have ';'");
-                    System.out.println("Line: (==> "+line+" <==)");
-                    System.out.println("In File="+filePath);
+                    System.out.println("[Eraro] Kylin Eraro: Ne havas ';'");
+                    System.out.println("Linio: (==> "+line+" <==)");
+                    System.out.println("En Dosiero="+filePath);
                     System.exit(0);
                 }
                 list.add(NewVarName);
