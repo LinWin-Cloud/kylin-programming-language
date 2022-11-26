@@ -1,0 +1,7 @@
+
+var a = "hello world";
+var b = "abcd";
+var c = 1.11;
+var d = 10;
+
+api.print("hello world")
