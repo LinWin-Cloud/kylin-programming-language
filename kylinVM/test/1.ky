@@ -5,4 +5,4 @@ var a = 0;
 var b = 2;
 var c = 3;
 
-api.presiln(a+b+c);
+api.presiln(saluton);
