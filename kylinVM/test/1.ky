@@ -1,0 +1,10 @@
+
+var hello = "hello world";
+
+var a = 0;
+var b = 2;
+var c = 3;
+var d = "hello world";
+
+api.println(d);
+api.println(b+c);
