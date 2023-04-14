@@ -13,5 +13,27 @@
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    
+    <dependencies>
+        <dependency>
+            <groupId>com.github.teja24nex</groupId>
+            <artifactId>jartest</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.teja24nex</groupId>
+            <artifactId>jartest</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.teja24nex</groupId>
+            <artifactId>jartest</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.teja24nex</groupId>
+            <artifactId>jartest</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+    </dependencies>
+
 </project>
