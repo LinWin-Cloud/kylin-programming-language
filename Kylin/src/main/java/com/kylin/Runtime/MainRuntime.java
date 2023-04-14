@@ -29,7 +29,7 @@ public class MainRuntime {
                     String tmp = words[2];
 
                     if (tmp.equals("=")) {
-                        this.value.put(name,words[3]);
+                        this.value.put(name,words[3].trim());
                         continue;
                     }
                     if (tmp.equals(";")) {
@@ -50,6 +50,19 @@ public class MainRuntime {
                     String FunctionContent = source_code.substring(source_code.indexOf("(")+1,source_code.lastIndexOf(")")-1);
                     String[] InputValue = FunctionContent.split(",");
 
+                    ArrayList<String> FunctionCode = new ArrayList<>();
+
+                    for (int i = codeLine ; i < code.size() ; i++) {
+                        String line = code.get(i);
+                        line = line.trim();
+                        System.out.println(line);
+                        FunctionCode.add(line);
+                    }
+                    Function func = new Function();
+                    func.FunctionCode = FunctionCode;
+                    for (String i : InputValue){
+                        func.FunctionValue.put(i.trim(),null);
+                    }
 
                 }catch (Exception exception){
                     this.sendSyntaxError("Defined function error.");
