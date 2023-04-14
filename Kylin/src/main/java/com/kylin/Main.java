@@ -34,6 +34,7 @@ public class Main {
                 if (line == null) {
                     break;
                 }
+                line = line.trim();
                 code.add(line);
             }
             MainRuntime mainRuntime = new MainRuntime();
