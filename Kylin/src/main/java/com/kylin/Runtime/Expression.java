@@ -1,5 +1,8 @@
 package com.kylin.Runtime;
 
+import com.kylin.Exception.RuntimeError;
+import com.kylin.Main;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.math.BigDecimal;
@@ -14,7 +17,7 @@ public class Expression {
             return String.valueOf(result);
         }
         catch (Exception exception){
-
+            MainRuntime.sendRuntimeError(exception.getMessage(),line);
         }
 
         try {

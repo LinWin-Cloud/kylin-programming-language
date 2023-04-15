@@ -1,5 +1,7 @@
 package com.kylin.Runtime;
 
+import com.kylin.Exception.RuntimeError;
+
 public class BaseRuntime {
     public static void exec(String code,int line) {
         if (code.startsWith("out")) {
@@ -17,6 +19,9 @@ public class BaseRuntime {
             catch (Exception exception) {
                 MainRuntime.sendSyntaxError("Syntax Error",line);
             }
+        }
+        else {
+            MainRuntime.sendRuntimeError("Unknown code: "+code,line);
         }
     }
 }

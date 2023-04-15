@@ -1,5 +1,6 @@
 package com.kylin.Runtime;
 
+import com.kylin.Exception.RuntimeError;
 import com.kylin.Exception.SyntaxError;
 import com.kylin.Main;
 
@@ -66,6 +67,19 @@ public class MainRuntime {
                 }
                 continue;
             }
+            if (words[0].startsWith("try")){
+                ArrayList<String> TryCode = new ArrayList<>();
+                try {
+                    String CatchValue = null;
+                    for (int i = codeLine ; i < Main.code.size() ; i++) {
+                        if (Main.code.get(i).startsWith("catch")) {
+
+                        }
+                    }
+                }catch (Exception exception){
+                    MainRuntime.sendRuntimeError("Syntax Error",codeLine);
+                }
+            }
             else {
                 BaseRuntime.exec(source_code,codeLine+1);
                 continue;
@@ -80,5 +94,12 @@ public class MainRuntime {
         syntaxError.setTime();
         System.out.println(syntaxError.getError());
         System.exit(0);
+    }
+    public static void sendRuntimeError(String message,int line) {
+        RuntimeError runtimeError = new RuntimeError();
+        runtimeError.setFile(Main.resource.getAbsolutePath());
+        runtimeError.setLine(line);
+        runtimeError.setTime();
+        runtimeError.setMessage(message);
     }
 }

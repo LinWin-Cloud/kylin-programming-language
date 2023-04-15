@@ -1,5 +1,6 @@
 package com.kylin;
 
+import com.kylin.Exception.RuntimeError;
 import com.kylin.Runtime.MainRuntime;
 
 import java.io.BufferedReader;
@@ -7,10 +8,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Main {
     public static File resource;
     public static ArrayList<String> code = new ArrayList<>();
+    public static HashMap<Integer, RuntimeError> Exception = new HashMap<>();
 
     public static void main(String[] args) {
         if (args.length == 0) {
