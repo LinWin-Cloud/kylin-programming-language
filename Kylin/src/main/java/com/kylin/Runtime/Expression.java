@@ -3,11 +3,13 @@ package com.kylin.Runtime;
 import java.util.ArrayList;
 import java.util.List;
 import java.math.BigDecimal;
+import java.util.Locale;
 
 public class Expression {
     public static String getExpression(String input,int line) {
         try {
-            List<String> tokens = tokenize(input);
+            String tmp = input.replaceAll("\\s","");
+            List<String> tokens = tokenize(tmp);
             BigDecimal result = calculate(tokens,line);
             return String.valueOf(result);
         }
