@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Kylin.iml" filepath="$PROJECT_DIR$/Kylin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/kylin.iml" filepath="$PROJECT_DIR$/kylin.iml" />
     </modules>
   </component>
 </project>
