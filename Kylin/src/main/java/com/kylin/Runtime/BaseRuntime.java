@@ -8,7 +8,7 @@ public class BaseRuntime {
                 String PrintContent = code.substring(code.indexOf("(")+1,code.lastIndexOf(")"));
                 Value value = MainRuntime.value.get(PrintContent.trim());
                 if (value == null) {
-                    System.out.println(PrintContent);
+                    System.out.println(Expression.getExpression(PrintContent,line));
                 }
                 else {
                     System.out.println(value.value);
