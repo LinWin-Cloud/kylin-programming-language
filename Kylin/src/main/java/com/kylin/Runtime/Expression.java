@@ -14,6 +14,7 @@ public class Expression {
             return String.valueOf(result);
         }
         catch (Exception exception){
+
         }
 
         try {
