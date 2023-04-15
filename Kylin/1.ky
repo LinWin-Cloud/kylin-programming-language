@@ -1,0 +1,13 @@
+
+let a = 1
+func print(name,hello):
+	let a = 1
+	let b = 2
+	let c = 3
+end
+
+try
+	out(1)
+error(e)
+	out(e.message)
+end
