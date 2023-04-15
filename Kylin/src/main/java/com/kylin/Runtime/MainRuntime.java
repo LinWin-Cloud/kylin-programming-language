@@ -7,35 +7,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MainRuntime {
-    private ArrayList<String> code = new ArrayList<>();
-    private HashMap<String,Value> value = new HashMap<>();
-    private HashMap<String,String> function = new HashMap<>();
 
-    public void setCode(ArrayList<String> arrayList) {
-        this.code = arrayList;
-    }
+    public static HashMap<String,Value> value = new HashMap<>();
+    public static HashMap<String,String> function = new HashMap<>();
 
-    public void run() {
-        int codeLine = 0;
-        for (String source_code : code) {
-            codeLine++;
+    public static void run() {
+        int size = Main.code.size();
+        for (int codeLine = 0 ; codeLine < size ; codeLine++) {
+            String source_code = Main.code.get(codeLine);
+
             String[] words = source_code.split(" ");
             if (words[0].startsWith("//")) {
                 continue;
-            }
-            if (words[0].startsWith("let")) {
-                try {
-                    String name = words[1];
-                    String value = source_code.substring(source_code.indexOf("=")+1).trim();
-                    Value NewValue = new Value();
-                    NewValue.name = name;
-                    NewValue.value = value;
-
-                    this.value.put(name,NewValue);
-                }
-                catch (Exception exception){
-                    this.sendSyntaxError("Defined variable error.");
-                }
             }
             if (words[0].startsWith("func")) {
                 try {
@@ -45,10 +28,13 @@ public class MainRuntime {
 
                     ArrayList<String> FunctionCode = new ArrayList<>();
 
-                    for (int i = codeLine ; i < code.size() ; i++) {
-                        String line = code.get(i).trim();
+                    //System.out.println("function start: "+codeLine);
+                    for (int i = codeLine ; codeLine < size ; i++) {
+                        String line = Main.code.get(i).trim();
 
                         if (line.startsWith("end")) {
+                            codeLine = i;
+                            //System.out.println("Function end:" + codeLine);
                             break;
                         }
                         FunctionCode.add(line);
@@ -60,15 +46,37 @@ public class MainRuntime {
                         func.FunctionValue.put(i.trim(),null);
                     }
                 }catch (Exception exception){
-                    this.sendSyntaxError("Defined function error.");
+                    sendSyntaxError("Defined function error.",codeLine+1);
                 }
+                continue;
+            }
+            if (words[0].startsWith("let")) {
+                try {
+                    String name = words[1];
+                    String value = source_code.substring(source_code.indexOf("=")+1).trim();
+                    Value NewValue = new Value();
+                    NewValue.name = name;
+                    NewValue.value = value;
+                    //System.out.println(name+" "+value+";");
+
+                    MainRuntime.value.put(name,NewValue);
+                }
+                catch (Exception exception){
+                    sendSyntaxError("Defined variable error.",codeLine+1);
+                }
+                continue;
+            }
+            else {
+                BaseRuntime.exec(source_code,codeLine+1);
+                continue;
             }
         }
     }
-    public void sendSyntaxError(String message) {
+    public static void sendSyntaxError(String message,int line) {
         SyntaxError syntaxError = new SyntaxError();
         syntaxError.setFile(Main.resource.getAbsolutePath());
         syntaxError.setMessage(message);
+        syntaxError.setLine(line);
         syntaxError.setTime();
         System.out.println(syntaxError.getError());
         System.exit(0);
