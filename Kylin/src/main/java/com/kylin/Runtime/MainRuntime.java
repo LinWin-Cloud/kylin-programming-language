@@ -33,7 +33,7 @@ public class MainRuntime {
                     for (int i = codeLine ; codeLine < size ; i++) {
                         String line = Main.code.get(i).trim();
 
-                        if (line.startsWith("end")) {
+                        if (line.equals("end")) {
                             codeLine = i;
                             //System.out.println("Function end:" + codeLine);
                             break;
@@ -69,13 +69,36 @@ public class MainRuntime {
             }
             if (words[0].startsWith("try")){
                 ArrayList<String> TryCode = new ArrayList<>();
+                ArrayList<String> CatchCode = new ArrayList<>();
                 try {
                     String CatchValue = null;
-                    for (int i = codeLine ; i < Main.code.size() ; i++) {
-                        if (Main.code.get(i).startsWith("catch")) {
+                    TryCodeFor:
+                    for (int i = codeLine+1 ; i < Main.code.size() ; i++) {
+                        String line = Main.code.get(i);
+                        if (line.startsWith("error")) {
+                            CatchValue = line.substring(line.indexOf("(")+1,line.lastIndexOf(")"));
+                            codeLine = i;
 
+                            CatchCodeFor:
+                            for (int j = codeLine+1 ; j < size ; j++) {
+                                String Catch = Main.code.get(j);
+                                if (CatchCode.equals("end")) {
+                                    codeLine = j;
+                                    break CatchCodeFor;
+                                }
+                                CatchCode.add(Catch);
+                            }
+                            break TryCodeFor;
                         }
+                        TryCode.add(line.trim());
                     }
+                    ExceptionCatch exceptionCatch = new ExceptionCatch();
+                    exceptionCatch.CatchCode = CatchCode;
+                    exceptionCatch.TryCode = TryCode;
+                    exceptionCatch.ExceptionValue = CatchValue;
+                    Main.ExceptionCode.add(exceptionCatch);
+
+                    System.out.println(exceptionCatch.TryCode);
                 }catch (Exception exception){
                     MainRuntime.sendRuntimeError("Syntax Error",codeLine);
                 }

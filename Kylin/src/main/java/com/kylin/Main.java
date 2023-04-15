@@ -1,6 +1,7 @@
 package com.kylin;
 
 import com.kylin.Exception.RuntimeError;
+import com.kylin.Runtime.ExceptionCatch;
 import com.kylin.Runtime.MainRuntime;
 
 import java.io.BufferedReader;
@@ -14,6 +15,7 @@ public class Main {
     public static File resource;
     public static ArrayList<String> code = new ArrayList<>();
     public static HashMap<Integer, RuntimeError> Exception = new HashMap<>();
+    public static ArrayList<ExceptionCatch> ExceptionCode = new ArrayList<>();
 
     public static void main(String[] args) {
         if (args.length == 0) {
