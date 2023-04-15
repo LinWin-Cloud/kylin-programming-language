@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public class MainRuntime {
     private ArrayList<String> code = new ArrayList<>();
-    private HashMap<String,String> value = new HashMap<>();
+    private HashMap<String,Value> value = new HashMap<>();
     private HashMap<String,String> function = new HashMap<>();
 
     public void setCode(ArrayList<String> arrayList) {
@@ -26,19 +26,12 @@ public class MainRuntime {
             if (words[0].startsWith("let")) {
                 try {
                     String name = words[1];
-                    String tmp = words[2];
+                    String value = source_code.substring(source_code.indexOf("=")+1).trim();
+                    Value NewValue = new Value();
+                    NewValue.name = name;
+                    NewValue.value = value;
 
-                    if (tmp.equals("=")) {
-                        this.value.put(name,words[3].trim());
-                        continue;
-                    }
-                    if (tmp.equals(";")) {
-                        this.value.put(name,null);
-                        continue;
-                    }
-                    else {
-                        this.sendSyntaxError("Defined variable error.");
-                    }
+                    this.value.put(name,NewValue);
                 }
                 catch (Exception exception){
                     this.sendSyntaxError("Defined variable error.");
@@ -53,17 +46,19 @@ public class MainRuntime {
                     ArrayList<String> FunctionCode = new ArrayList<>();
 
                     for (int i = codeLine ; i < code.size() ; i++) {
-                        String line = code.get(i);
-                        line = line.trim();
-                        System.out.println(line);
+                        String line = code.get(i).trim();
+
+                        if (line.startsWith("end")) {
+                            break;
+                        }
                         FunctionCode.add(line);
                     }
                     Function func = new Function();
                     func.FunctionCode = FunctionCode;
+                    func.FunctionName = FunctionName;
                     for (String i : InputValue){
                         func.FunctionValue.put(i.trim(),null);
                     }
-
                 }catch (Exception exception){
                     this.sendSyntaxError("Defined function error.");
                 }
